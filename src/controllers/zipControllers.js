@@ -1,5 +1,4 @@
 import { systemLogger, errorLogger, missingZipLogger } from "../utils/logger.mjs";
-import * as dynamo from "../clients/dynamoClient.js";
 import { utcTimestamp } from "../utils/timestamp.js";
 import * as mongo from "../clients/mongoDB.js";
 
@@ -15,37 +14,6 @@ export const getZip = async (req, res) => {
 	} catch (error) {
 		console.error(error);
 		errorLogger.log(`[${utcTimestamp()}] - Error finding zip code ${error}.`);
-		res.status(500).json({ message: "Internal Server Error" });
-	}
-};
-
-//dynamo
-export const getAllZips = async (req, res) => {
-	const city = await req.params.city;
-	const state = await req.params.state;
-	const country = await req.params.country;
-	systemLogger.log(`[${utcTimestamp()}] - Finding zip code for ${city}, ${state}, ${country}.`);
-	try {
-		const data = await dynamo.findZipCodes(city, state, country);
-		res.status(200).json(data);
-	} catch (error) {
-		console.error(error);
-		errorLogger.log(`[${utcTimestamp()}] - Error finding zip code ${error}.`);
-		res.status(500).json({ message: "Internal Server Error" });
-	}
-};
-
-//dynamo
-export const getZipJSON = async (req, res) => {
-	const city = req.body.city;
-	const state = req.body.state;
-	const country = req.body.country;
-	try {
-		systemLogger.log(`[${utcTimestamp()}] - Finding zip code for ${city}, ${state}, ${country}.`);
-		const data = await dynamo.findZipCode(city, state, country);
-		res.status(200).json(data);
-	} catch (error) {
-		console.error(error);
 		res.status(500).json({ message: "Internal Server Error" });
 	}
 };

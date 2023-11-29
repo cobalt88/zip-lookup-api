@@ -1,10 +1,11 @@
 import * as mongodb from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
-const { MONGO_URI, MONGO_DATABASE, MONGO_COLLECTION, MONGO_COLLECTION_2 } = process.env;
+const { MONGO_URI, MONGO_DATABASE, MONGO_COLLECTION, MONGO_COLLECTION_2, API_KEY_COLLECTION } = process.env;
 
 let collection1;
 let collection2;
+let collection3;
 
 const MongoClient = mongodb.MongoClient;
 export const client = new MongoClient(MONGO_URI);
@@ -17,6 +18,8 @@ export const connectToMongo = async () => {
 		console.log("Connected to MongoDB full text search");
 		collection2 = client.db(MONGO_DATABASE).collection(MONGO_COLLECTION_2);
 		console.log("Connected to MongoDB unique-zips");
+		collection3 = client.db(MONGO_DATABASE).collection(API_KEY_COLLECTION);
+		console.log("Connected to MongoDB API Keys");
 	} catch (error) {
 		console.error(error);
 	}
@@ -68,6 +71,15 @@ export const findZipCode = async (city, state, country) => {
 			.toArray();
 		console.log(data);
 		return data[0];
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+export const findApiKey = async (apiKey) => {
+	try {
+		const data = await collection3.findOne({ key: apiKey });
+		return data;
 	} catch (error) {
 		console.error(error);
 	}

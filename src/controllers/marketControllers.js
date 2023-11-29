@@ -1,7 +1,7 @@
 import { systemLogger, errorLogger, missingZipLogger } from "../utils/logger.mjs";
-import * as dynamo from "../clients/dynamoClient.js";
 import { utcTimestamp } from "../utils/timestamp.js";
 
+// Convert these to use the mongo endpoint
 export const getMarket = async (req, res) => {
 	const zip = await req.params.zip;
 	systemLogger.log(`[${utcTimestamp()}] - Finding market for ${zip}.`);

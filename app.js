@@ -6,14 +6,16 @@ import { utcTimestamp } from "./src/utils/timestamp.js";
 import nodeProcess from "node:process";
 import "dotenv/config";
 import { connectToMongo } from "./src/clients/mongoDB.js";
+import { authenticate } from "./src/utils/auth.js";
 
 const port = process.env.PORT || 5555;
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(authenticate);
 
-app.use("/api", apiRoutes);
+app.use("/api", authenticate, apiRoutes);
 
 //connect to mongodb
 connectToMongo();
