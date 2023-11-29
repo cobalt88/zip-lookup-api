@@ -48,7 +48,7 @@ export const findLatLong = async (country, zip) => {
 export const findZipCode = async (city, state, country) => {
 	console.log("made it to findZipCode");
 	const filterQuery = `MajorCity: ${city} AND State: ${state} AND ${country.length === 2 ? "Country2" : "Country3"}: ${country}`;
-
+	console.log(filterQuery);
 	try {
 		const data = await collection1
 			.aggregate([

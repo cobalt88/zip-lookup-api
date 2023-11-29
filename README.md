@@ -96,11 +96,17 @@ Contributors are welcome, just keep a few things in mind:
 
 No tests currently exist for this application. Feel free to make some though.
 
-## About The Author
+## About The Authors
 
 I hope you enjoy the application, if you have any questions, comments, concerns, feedback, ect,
 please feel free to open a new issue or reach out directly.
 
-- Links [CircleLogistics](https://www.circledelivers.com)
-- Email: [vincent.teune@circledelivers.com](vincent.teune@circledelivers.com)
-- GitHub: [CircleLogistics](https://github.com/circle-logistics)
+### Vincent Teune - Development
+
+- Email: [vincent@vtportfolio.net](vincent@vtportfolio.net)
+- GitHub: [cobalt88](https://github.com/circle-logistics)
+
+### Jarod Barnhart - Data
+
+- Email: [jarod.barnhart@gmail.com](jarod.barnhart@gmail.com)
+- GitHub: [jibarnhart](https://github.com/jibarnhart)
