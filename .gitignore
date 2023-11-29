@@ -1,9 +1,9 @@
 # npm
 node_modules
 package-lock.json
-*.log
-*.gz
-logs
+# *.log
+# *.gz
+# logs
 
 # Coveralls
 .nyc_output
